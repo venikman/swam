@@ -1,0 +1,6 @@
+Resume the memetics sprint from repo state.
+
+1) Read the newest file in `work/checkpoints/` and summarize current state.
+2) Read `work/00_deliverables_manifest.md` and list what’s missing/incomplete.
+3) Continue work, producing the next checkpoint file and updating deliverables.
+Follow all rules in `prompts/00_codex_thread_prompt.md`.
