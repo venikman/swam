@@ -124,3 +124,18 @@ Produce an auditable, citation-heavy research proposal package on **memetics** a
   - Done: Drafted Milestone 2 artifacts (expanded `work/reading_list.md` + wrote `work/evidence_pack.md` + created checkpoint `work/checkpoints/20260205-1834.md`).
   - Next: Milestone 3 concept map + characterization passport (`work/memetics_map.md`), then parity plan (`work/parity_plan.md`).
   - Blockers: None.
+
+- 2026-02-05T18:38:00-05:00
+  - Done: Milestone 2 committed (evidence pack + expanded source registry). Commit: `8e46667`.
+  - Next: Write `work/memetics_map.md`, then parity compare artifacts.
+  - Blockers: None.
+
+- 2026-02-05T18:50:00-05:00
+  - Done: Milestones 3+5 committed (concept map + characterization passport; parity plan + parity report). Commit: `96ead91`.
+  - Next: Generate and prune hypothesis/problem portfolios, record pruning ADR, then write study designs.
+  - Blockers: None.
+
+- 2026-02-05T18:52:00-05:00
+  - Done: Milestones 4+6 committed (hypothesis/problem portfolios + study designs + ADR updates). Commit: `324193e`.
+  - Next: Run validation commands; ensure all manifest deliverables exist and are citation-covered; fix any gaps.
+  - Blockers: None.
