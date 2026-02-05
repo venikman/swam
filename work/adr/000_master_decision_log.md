@@ -121,3 +121,146 @@ Treat the above three as first-class candidates in parity evaluation and concept
 ### Rollback plan
 If one framing becomes clearly dominated for the project’s acceptance criteria, record the dominance argument (with evidence) and deprecate it via a superseding ADR.
 
+---
+
+## ADR-003: Treat “Meme” as a Portfolio of Candidate Constructs (No Forced Single Definition)
+
+- Status: accepted
+- Date: 2026-02-05
+- Valid-until: 2026-08-05 (refresh if a new synthesis provides a dominant operational definition with clear measurement superiority in the target domain)
+- Decision owner: Principal
+- Scope: `work/memetics_map.md`, `work/hypothesis_portfolio.md`, `work/problem_portfolio.md`, `work/parity_*`
+
+### Context
+Across the literature, “meme” is used in both strong (replicator-like) and weak (unit-of-imitation / cultural item) senses, and also as a pragmatic proxy label in online diffusion studies. Treating these as the same object risks equivocation and untestable debates. [S28] [S05] [S24]
+
+### Forces
+- We must avoid “silent scalarization” and preserve alternatives when trade-offs exist. [S01] [S02]
+- We must keep definitions operational and falsifiable (or explicitly mark as contested/unknown). [S01] [S28]
+- We need to support parity comparison across three framings without straw-manning any single one. [S01] [S02]
+
+### Decision
+Represent “meme” as a **set of candidate constructs** (portfolio), at minimum:
+- strong replicator-claim meme (empirical claim; falsifiable),
+- weak unit-of-imitation gloss (often underconstrained),
+- operational proxy (e.g., hashtags-as-memes in a bounded data channel). [S28] [S24] [S06]
+
+Do not collapse these into a single “true” definition in v0.1. [S01] [S02]
+
+### Alternatives considered
+- A: Pick one “official” definition of meme (rejected: high risk of equivocation or premature commitment; contested). [S28]
+- B: Declare memetics “invalid” and drop it (rejected: violates required parity set; also removes a useful hypothesis class). [S01] [S02]
+- C: Treat “meme” as purely metaphorical and non-operational (rejected: fails the “testable/tractable” acceptance criteria). [S01]
+
+### Evidence
+- Strong vs weak “meme” distinction and “meme as substantive empirical claim” argument. [S28]
+- Critique that memetics debates reveal misunderstandings in Darwinian cultural evolution and warn against over-literal gene↔culture analogy. [S05]
+- Online operationalization: hashtags used as meme proxies within a limited-attention diffusion model. [S24]
+
+### Consequences
+- Positive: Keeps debates legible; enables explicit falsifiers; supports Pareto/portfolio outputs.
+- Negative: Requires extra work in every study design to state which “meme” construct is in play and how it is measured.
+- Follow-ups: In `work/study_designs.md`, each proposed study must declare which construct(s) it tests and why.
+
+### Rollback plan
+If a particular construct becomes clearly dominated for the bounded context (e.g., cannot be operationalized; no plausible falsifiers), record dominance in a new ADR and deprecate it for that context.
+
+---
+
+## ADR-004: Characterization Passport Indicator Set (I1–I8) for Parity + Portfolio Selection
+
+- Status: accepted
+- Date: 2026-02-05
+- Valid-until: 2026-08-05 (refresh if the project scope changes or new measurement tooling/data access materially changes tractability)
+- Decision owner: Principal
+- Scope: `work/memetics_map.md`, `work/parity_plan.md`, `work/parity_report.md`, and portfolio pruning rules
+
+### Context
+We need a shared indicator set to compare framings and to prune hypothesis/problem portfolios to a Pareto frontier without collapsing mixed measurement types into a single score. [S01] [S02]
+
+### Forces
+- Must support set-valued/Pareto selection; avoid ordinal averaging. [S01] [S02]
+- Must be anchored in what the sources emphasize as core disputes: unit clarity, copying vs transformation, mechanism specificity, and empirical tractability. [S28] [S22] [S14] [S24]
+- Must respect safety boundary: no manipulation playbooks. [S01]
+
+### Decision
+Adopt the indicator set defined in `work/memetics_map.md` Section 5 (I1–I8), covering:
+unit explicitness, proxy availability, transmission mode fit, falsifiability hooks, predictive leverage, mechanism specificity, data/compute tractability, ethical/safety risk. [S02] [S01]
+
+### Alternatives considered
+- A: Single composite “score” (rejected: violates no-scalarization constraint). [S01] [S02]
+- B: Purely narrative comparison with no indicators (rejected: weak auditability; harder to reproduce parity results). [S02]
+- C: Indicator set focused only on online diffusion metrics (rejected: too narrow for memetics-as-framework comparison). [S14] [S18]
+
+### Evidence
+- Portfolio/Pareto selection requirement and parity discipline in task spec. [S01]
+- FPF constraints on mixed measurement types and set-valued outcomes. [S02]
+- Empirical anchors motivating tractability and mechanism indicators: limited attention models and complex contagion reinforcement. [S24] [S26]
+- Transformation/attraction critiques motivating the transmission-fit indicator. [S28] [S22] [S29]
+
+### Consequences
+- Positive: Enables a consistent Pareto comparison across deliverables; supports reproducible parity plan/report.
+- Negative: Indicator levels are initially coarse (mostly ordinal/qual) and may require refinement once a bounded domain/dataset is chosen.
+- Follow-ups: In `work/parity_plan.md`, specify per-indicator measurement procedures and handling of “unknown/missing”.
+
+### Rollback plan
+If indicator set is found to omit a critical stakeholder constraint (e.g., privacy constraints for a chosen dataset), add a new ADR superseding this indicator set and update parity + portfolios accordingly.
+
+---
+
+## ADR-005: v0.1 Portfolio Pruning Results (Hypotheses + Problems)
+
+- Status: accepted
+- Date: 2026-02-05
+- Valid-until: 2026-08-05 (refresh if bounded context changes, new datasets/tooling arrive, or dominance relations change under refined indicators)
+- Decision owner: Principal
+- Scope: `work/hypothesis_portfolio.md`, `work/problem_portfolio.md`, `work/study_designs.md`
+
+### Context
+The sprint requires generating ≥12 candidates for hypotheses and research problems, then selecting a **Pareto frontier** (≈5–7) without collapsing mixed measurement types into a single score. [S01] [S02]
+
+### Forces
+- Must preserve alternatives when trade-offs remain; publish sets, not a single winner. [S01] [S02]
+- Must retain empirical tractability anchored in at least one online diffusion proxy context, while also testing the copying↔transformation dispute central to memetics critiques. [S24] [S28] [S22]
+- Must enforce safety boundary (no manipulation playbooks). [S01]
+
+### Decision
+Select the following v0.1 frontier items for study design focus:
+
+Hypothesis frontier (from `work/hypothesis_portfolio.md`):
+- H03 (Proxy sensitivity) [S24] [S28]
+- H07 (Attention improves prediction) [S24]
+- H08 (Complex contagion for meme sharing) [S26]
+- H04 (Attractor convergence under transmission) [S22] [S29]
+- H06 (Strong vs weak meme operationalization) [S28]
+- H11 (F1 as special case classifier) [S28] [S14]
+
+Problem frontier (from `work/problem_portfolio.md`):
+- P01 (Unit/proxy sensitivity) [S24] [S28]
+- P02 (Attention-limited prediction) [S24]
+- P03 (Complex contagion thresholds) [S26]
+- P04 (Attractor detection in transmission) [S22] [S29]
+- P05 (Transmission mode measurement templates) [S28] [S29]
+- P06 (Domain classifier for F1 special-case) [S28] [S14]
+
+Non-frontier items remain documented as alternates; they are not deleted. [S01]
+
+### Alternatives considered
+- A: Keep all candidates “equally active” (rejected: violates timebox; reduces tractability). [S01]
+- B: Collapse to a single top-ranked hypothesis/problem (rejected: violates Pareto-only constraint). [S01] [S02]
+- C: Focus only on online diffusion proxies (rejected: fails to test copying↔transformation dispute central to memetics critiques). [S28] [S22]
+
+### Evidence
+- Pareto/portfolio requirement + timebox constraints. [S01]
+- FPF constraints on mixed measurement types and set-valued outcomes. [S02]
+- Online tractability anchors: attention-limited meme competition proxy work. [S24]
+- Mechanism anchor: complex contagion reinforcement. [S26]
+- Transformation/attraction anchor: cultural attractors + graded culturalness and re-production critique. [S22] [S29] [S28]
+
+### Consequences
+- Positive: Concentrates effort on a balanced frontier spanning (a) online proxy tests and (b) transmission/transformation tests.
+- Negative: Some microfoundation-deepening alternates (representation mapping; graded culturalness) remain deferred pending better measurement templates and/or bounded domain selection. [S18] [S29]
+- Follow-ups: `work/study_designs.md` will define minimal study designs for each frontier problem/hypothesis pair, including falsifiers and confounders. [S01]
+
+### Rollback plan
+If new data access or refined measurement templates change tractability, rerun Pareto pruning under updated indicators and record a superseding ADR with the new frontier.
