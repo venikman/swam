@@ -115,3 +115,12 @@ Produce an auditable, citation-heavy research proposal package on **memetics** a
   - Next: Milestone 1 bootstrap files (`work/acceptance_spec.md`, ADR log), then start evidence registry.
   - Blockers: None.
 
+- 2026-02-05T18:11:00-05:00
+  - Done: Milestone 1 bootstrap completed (ExecPlan, acceptance spec, ADR log, initial source registry, first checkpoint). Commit: `e517b5e`.
+  - Next: Expand `work/reading_list.md` with primary/peer-reviewed/canonical sources and start `work/evidence_pack.md`.
+  - Blockers: None.
+
+- 2026-02-05T18:37:00-05:00
+  - Done: Drafted Milestone 2 artifacts (expanded `work/reading_list.md` + wrote `work/evidence_pack.md` + created checkpoint `work/checkpoints/20260205-1834.md`).
+  - Next: Milestone 3 concept map + characterization passport (`work/memetics_map.md`), then parity plan (`work/parity_plan.md`).
+  - Blockers: None.
