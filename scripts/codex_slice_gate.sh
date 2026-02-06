@@ -75,7 +75,7 @@ fi
 # If new sources were added to reading_list, ensure they are referenced in evidence_pack and the checkpoint.
 new_source_ids="$(
   git diff --unified=0 -- "work/reading_list.md" \
-    | rg -n '^\\+###\\s+S[0-9]{2,3}:' \
+    | rg '^\\+###\\s+S[0-9]{2,3}:' \
     | sed -E 's/^\\+###\\s+(S[0-9]{2,3}):.*$/\\1/' \
     | sort -u \
     || true
@@ -96,7 +96,7 @@ fi
 # Non-fatal "thin slice" warnings.
 deliverable_changes="$(
   printf '%s\n' "$changed_paths" \
-    | rg -n '^work/' \
+    | rg '^work/' \
     | rg -v '^work/STATE\\.md$' \
     | rg -v '^work/checkpoints/' \
     || true
@@ -106,4 +106,3 @@ if [ -z "$deliverable_changes" ]; then
 fi
 
 say "PASS"
-

@@ -333,3 +333,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Created new Codex App Automation config `swam-long` (every 2 hours) and paused `swam-slice` (status=PAUSED, next_run_at cleared).
   - Next: Click **Test** on `swam-long` and confirm it can run >70 minutes while pushing multiple micro-slice checkpoints; iterate on gate strictness if it stalls.
   - Blockers: None.
+
+- 2026-02-06T03:46:00-05:00
+  - Done: Fixed `codex_slice_gate` parsing bug (removed `rg -n` from diff/path pipelines so new-source detection works).
+  - Next: Run one automation test slice to ensure new checkpoints pass the gate and push cleanly.
+  - Blockers: None.
