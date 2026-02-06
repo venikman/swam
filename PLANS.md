@@ -214,3 +214,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Planned workflow hardening changes (this ExecPlan).
   - Next: Milestone 1 (checkpoint skill + automation prompt fix).
   - Blockers: None.
+
+- 2026-02-05T21:10:09-05:00
+  - Done: Milestone 1 complete (repo checkpoint skill + automation prompt uses `$checkpoint`). Commit: `b810274`.
+  - Done: Milestone 2 complete (conservative Codex Rules allowlist). Commit: `1a140fb`.
+  - Next: Milestone 3 (cloud setup script) then Milestone 4 (docs alignment).
+  - Blockers: None.
