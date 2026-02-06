@@ -153,7 +153,7 @@ Make this repo’s Codex workflow more durable and low-friction by:
 - updating README guidance to match current published Codex plan limits/models.
 
 ## Success criteria (observable)
-- A repo skill exists at `.codex/skills/checkpoint/SKILL.md`.
+- A repo skill exists at `.agents/skills/checkpoint/SKILL.md`.
 - `prompts/02_codex_automation_prompt.txt` invokes `$checkpoint` and no longer omits checkpoint content requirements.
 - A Rules file exists under `.codex/rules/` with conservative `prefix_rule(...)` allowlisting for routine commands.
 - A cloud setup script exists at `scripts/codex_setup.sh` and is syntactically valid (`bash -n`).
@@ -180,9 +180,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
 ## Milestones
 1. **Checkpoint skill + automation prompt fix**
    - Steps
-     - Create `.codex/skills/checkpoint/SKILL.md`.
+     - Create `.agents/skills/checkpoint/SKILL.md`.
      - Update `prompts/02_codex_automation_prompt.txt` to call `$checkpoint`.
-   - Validation: `test -f .codex/skills/checkpoint/SKILL.md && rg -n '\\$checkpoint' prompts/02_codex_automation_prompt.txt`
+   - Validation: `test -f .agents/skills/checkpoint/SKILL.md && rg -n '\\$checkpoint' prompts/02_codex_automation_prompt.txt`
    - Rollback: `git revert <commit>`
 
 2. **Rules allowlist (conservative)**
