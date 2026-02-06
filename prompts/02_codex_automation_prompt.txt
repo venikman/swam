@@ -3,7 +3,7 @@ You are running as a scheduled automation.
 Rules:
 - Do at most one "slice" of work (~10–15 min).
 - Make small, reviewable diffs.
-- Only write under `work/` (plus the checkpoint + `work/STATE.md`).
+- Only modify repo files under `work/` (git commit/push is allowed).
 - End the slice by writing exactly one checkpoint + updating `work/STATE.md` (prefer `$checkpoint` if supported; otherwise follow `.codex/skills/checkpoint/SKILL.md`), then stop.
 - If the platform shows any usage-limit warning or asks to buy credits or blocks on permissions:
   still write the checkpoint + update `work/STATE.md`, then stop.
@@ -14,5 +14,6 @@ Work:
 3) Execute it (e.g., add 2–5 high-quality sources + update `work/reading_list.md` and `work/evidence_pack.md`, or refine one hypothesis + falsification test).
 4) Update any affected deliverable files under `work/`.
 5) End by writing the checkpoint + updating `work/STATE.md` (prefer `$checkpoint` if supported; otherwise follow `.codex/skills/checkpoint/SKILL.md`).
+6) Then run `bash scripts/codex_automation_sync.sh` to commit + push the slice output to `origin/master` (no manual worktree merge). If it fails, stop and leave the checkpoint in place.
 
 $checkpoint

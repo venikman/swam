@@ -282,3 +282,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Added project Codex config `.codex/config.toml` to pin automations to `gpt-5.3-codex` with `xhigh` reasoning effort (project config overrides global).
   - Next: Click Automation "Test" once to confirm new runs report `gpt-5.3-codex` + `xhigh` in the run context.
   - Blockers: None.
+
+- 2026-02-06T02:40:00-05:00
+  - Done: Added `scripts/codex_automation_sync.sh` so automations commit + push their slice outputs to `origin/master` automatically (no manual worktree merge).
+  - Next: Update the automation prompt to run `bash scripts/codex_automation_sync.sh` after `$checkpoint`, then run one "Test" to verify it pushes successfully.
+  - Blockers: None (if git auth prompts, push will fail; switch repo remote to SSH or ensure keychain creds work non-interactively).
