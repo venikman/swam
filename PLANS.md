@@ -220,3 +220,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Milestone 2 complete (conservative Codex Rules allowlist). Commit: `1a140fb`.
   - Next: Milestone 3 (cloud setup script) then Milestone 4 (docs alignment).
   - Blockers: None.
+
+- 2026-02-05T21:15:55-05:00
+  - Done: Milestone 3 complete (Codex cloud setup script). Commit: `38ea5ad`.
+  - Done: Milestone 4 complete (docs alignment: README + thread prompt). Commit: `b6ab49d`.
+  - Next: Run final repo validations and keep the hardening changes conservative over time (avoid broad Rules prefixes).
+  - Blockers: None.
