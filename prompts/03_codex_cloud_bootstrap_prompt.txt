@@ -1,0 +1,15 @@
+Bootstrap (single Codex Cloud task)
+
+Read and follow `prompts/00_codex_thread_prompt.md`.
+
+Hard rules for this Cloud run:
+- Do ONE slice (~10–20 min). Keep the diff small and reviewable.
+- Write outputs only under `work/` (and any paths explicitly mandated by the thread prompt).
+- End by creating exactly ONE checkpoint file under `work/checkpoints/` and updating `work/STATE.md` (follow `.codex/skills/checkpoint/SKILL.md`; if explicit skill invocation is supported, you may use `$checkpoint`).
+- Then create a PR from this task branch and STOP.
+- If blocked by permissions/usage limits: still write the checkpoint + update `work/STATE.md`, then STOP.
+
+Start:
+1) Read `work/STATE.md` (it may be a template on first run).
+2) Read the newest file in `work/checkpoints/` (if any).
+3) Execute the single highest-priority item from “Next actions”.
