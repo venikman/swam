@@ -122,8 +122,15 @@ while :; do
   fi
 
   git fetch origin "${branch}" >/dev/null 2>&1 || true
-  git checkout "${branch}" >/dev/null 2>&1 || true
-  git pull --ff-only origin "${branch}"
+  if git show-ref --verify --quiet "refs/heads/${branch}"; then
+    git checkout "${branch}"
+  elif git rev-parse --verify "origin/${branch}" >/dev/null 2>&1; then
+    git checkout -b "${branch}" --track "origin/${branch}"
+  else
+    echo "Remote branch not found: origin/${branch}" >&2
+    exit 2
+  fi
+  git pull --ff-only
 
   query="$(cat "${prompt_path}")"
   echo
@@ -160,20 +167,21 @@ while :; do
   fi
 
   # Guardrails: only allow `work/` changes, and enforce exactly one new checkpoint file.
-  changed="$(git status --porcelain)"
-  if [[ -z "${changed}" ]]; then
+  status_lines="$(git status --porcelain)"
+  if [[ -z "${status_lines}" ]]; then
     echo "No local changes after apply; stopping."
     exit 0
   fi
 
-  disallowed="$(git diff --name-only | grep -Ev '^(work/)' || true)"
+  changed_paths="$(printf '%s\n' "${status_lines}" | awk '{print $2}')"
+  disallowed="$(printf '%s\n' "${changed_paths}" | grep -Ev '^(work/)' || true)"
   if [[ -n "${disallowed}" ]]; then
     echo "Refusing to commit: changes outside work/ detected:" >&2
     printf '%s\n' "${disallowed}" >&2
     exit 2
   fi
 
-  new_checkpoint_files="$(git diff --name-only --diff-filter=A | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' || true)"
+  new_checkpoint_files="$(printf '%s\n' "${status_lines}" | awk '$1=="??"{print $2}' | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' || true)"
   checkpoint_count="$(printf '%s\n' "${new_checkpoint_files}" | sed '/^$/d' | wc -l | tr -d ' ')"
   if [[ "${checkpoint_count}" != "1" ]]; then
     echo "Refusing to commit: expected exactly 1 new checkpoint file, found ${checkpoint_count}." >&2
@@ -185,7 +193,7 @@ while :; do
   checkpoint_stamp="${checkpoint_file##*/}"
   checkpoint_stamp="${checkpoint_stamp%.md}"
 
-  if ! git diff --name-only | grep -q '^work/STATE.md$'; then
+  if ! printf '%s\n' "${changed_paths}" | grep -qx 'work/STATE.md'; then
     echo "Refusing to commit: expected work/STATE.md to be modified." >&2
     exit 2
   fi
