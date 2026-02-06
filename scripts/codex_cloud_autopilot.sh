@@ -222,7 +222,7 @@ backoff_sleep() {
 
 diff_paths_from_unified_diff() {
   # Output unique file paths from `diff --git a/... b/...` lines.
-  awk '/^diff --git a\\//{print $3; print $4}' \
+  awk '/^diff --git a\//{print $3; print $4}' \
     | sed -E 's|^[ab]/||' \
     | sort -u
 }
@@ -250,7 +250,7 @@ precheck_unified_diff() {
     return 1
   fi
 
-  ckpt_paths="$(printf '%s\n' "${paths}" | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' || true)"
+  ckpt_paths="$(printf '%s\n' "${paths}" | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\.md$' || true)"
   ckpt_count="$(printf '%s\n' "${ckpt_paths}" | sed '/^$/d' | wc -l | tr -d ' ')"
   if [[ "${ckpt_count}" != "1" ]]; then
     echo "Precheck failed: expected exactly 1 checkpoint path in diff, found ${ckpt_count} (attempt=${attempt_label})." >&2
@@ -333,7 +333,13 @@ while :; do
   out=""
   while :; do
     out="$(codex cloud exec --env "${env_id}" --branch "${branch}" --attempts "${cloud_attempts}" "${query}" 2>&1 || true)"
-    task_url="$(printf '%s\n' "${out}" | grep -Eo 'https://chatgpt\\.com/codex/tasks/[^[:space:]]+' | tail -n 1 || true)"
+    task_url="$(
+      printf '%s\n' "${out}" \
+        | tr -d '\r' \
+        | grep -Eo 'https://(chatgpt\.com|chat\.openai\.com)/codex/tasks/[^[:space:]]+' \
+        | tail -n 1 \
+        || true
+    )"
     if [[ -n "${task_url}" ]]; then
       task_id="${task_url##*/}"
       backoff_reset
@@ -418,7 +424,7 @@ while :; do
     exit 2
   fi
 
-  new_checkpoint_files="$(printf '%s\n' "${status_lines}" | awk '$1=="??"{print $2}' | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' || true)"
+  new_checkpoint_files="$(printf '%s\n' "${status_lines}" | awk '$1=="??"{print $2}' | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\.md$' || true)"
   checkpoint_count="$(printf '%s\n' "${new_checkpoint_files}" | sed '/^$/d' | wc -l | tr -d ' ')"
   if [[ "${checkpoint_count}" != "1" ]]; then
     echo "Refusing to commit: expected exactly 1 new checkpoint file, found ${checkpoint_count}." >&2
