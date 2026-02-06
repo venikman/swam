@@ -49,8 +49,16 @@ if ! git status --porcelain=v1 -- "work/STATE.md" | grep -q .; then
   fail "work/STATE.md not modified"
 fi
 
-# Exactly one *new* checkpoint file must exist (untracked at gate time).
-ckpt_paths="$(git ls-files --others --exclude-standard -- "work/checkpoints/*.md" | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\.md$' || true)"
+# Exactly one *new* checkpoint file must exist.
+# Accept either:
+# - untracked (??)
+# - staged as a new file (A*), in case the slice staged files early.
+ckpt_paths="$(
+  git status --porcelain=v1 -- "work/checkpoints/*.md" \
+    | awk '($1=="??" || substr($1,1,1)=="A"){print $2}' \
+    | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' \
+    || true
+)"
 ckpt_count="$(printf '%s\n' "$ckpt_paths" | sed '/^$/d' | wc -l | tr -d ' ')"
 if [ "$ckpt_count" -ne 1 ]; then
   fail "expected exactly 1 new checkpoint file under work/checkpoints/, found: $ckpt_count"

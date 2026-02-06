@@ -338,3 +338,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Fixed `codex_slice_gate` parsing bug (removed `rg -n` from diff/path pipelines so new-source detection works).
   - Next: Run one automation test slice to ensure new checkpoints pass the gate and push cleanly.
   - Blockers: None.
+
+- 2026-02-06T03:52:00-05:00
+  - Done: Made checkpoint detection robust to staged new checkpoint files (gate + sync now accept `A*` or `??` for the new checkpoint).
+  - Done: Removed stale Codex worktrees that contained leftover untracked checkpoints and out-of-scope files (prevents automation sync failures).
+  - Next: Click **Test** on `swam-long`; confirm multiple checkpoint pushes in one run.
+  - Blockers: None.

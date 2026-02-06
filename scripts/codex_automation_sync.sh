@@ -54,7 +54,12 @@ if ! git status --porcelain=v1 -- "work/STATE.md" | grep -q .; then
   die "work/STATE.md not modified (slice must update STATE + write exactly one checkpoint)"
 fi
 
-ckpt_paths="$(git ls-files --others --exclude-standard -- "work/checkpoints/*.md" | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\.md$' || true)"
+ckpt_paths="$(
+  git status --porcelain=v1 -- "work/checkpoints/*.md" \
+    | awk '($1=="??" || substr($1,1,1)=="A"){print $2}' \
+    | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' \
+    || true
+)"
 ckpt_count="$(printf "%s\n" "$ckpt_paths" | sed '/^$/d' | wc -l | tr -d ' ')"
 
 if [ "$ckpt_count" -ne 1 ]; then
