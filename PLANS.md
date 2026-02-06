@@ -276,3 +276,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Removed the GitHub Actions autopilot workflow (`.github/workflows/codex_autopilot.yml`) and reverted docs/plans to prefer Codex App Automations.
   - Next: Configure a Codex App Automation to run `prompts/02_codex_automation_prompt.txt` on an hourly schedule.
   - Blockers: None.
+
+- 2026-02-06T02:15:00-05:00
+  - Done: Created Codex App Automation `swam-slice` (hourly) and ran one slice; it produced checkpoint `work/checkpoints/20260206-0126.md` (added diffusion/contagion sources S30-S32).
+  - Done: Added project Codex config `.codex/config.toml` to pin automations to `gpt-5.3-codex` with `xhigh` reasoning effort (project config overrides global).
+  - Next: Click Automation "Test" once to confirm new runs report `gpt-5.3-codex` + `xhigh` in the run context.
+  - Blockers: None.
