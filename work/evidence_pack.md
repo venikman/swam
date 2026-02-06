@@ -23,7 +23,9 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Critique of memetics from this camp: [S28] [S29]
 - **Online diffusion / “internet memes” operational proxies:**
   - Hashtags as meme proxies; limited-attention competition: [S24]
-  - Complex contagion / reinforcement: [S26]
+  - Complex contagion / reinforcement: [S26] [S32]
+  - Structural diversity vs single-channel exposure: [S31]
+  - Influence vs homophily confound in diffusion estimates: [S30]
 
 ---
 
@@ -122,6 +124,33 @@ This is a “where to look” index; it does not resolve disagreements by scalar
 - Key takeaways (with status):
   - Supported: Argues there is a continuum between more individual and more cultural information; therefore culture is better treated as a property with degrees. [S29]
   - Supported: Emphasizes both preservative and constructive processes in transmission, and critiques overly preservative (copy-like) pictures. [S29]
+
+### S30 — Aral, Muchnik, Sundararajan (2009) — Influence vs homophily in diffusion
+- Why it matters:
+  - Provides a quantitative correction for “peer influence” estimates by separating influence from homophily, a major confound in diffusion claims. [S30]
+- Extracted quote (≤25 words):
+  - “previous methods overestimated peer influence effects by 300% to 700% and that homophily explains more than 50%” [S30]
+- Key takeaways (with status):
+  - Supported: The paper reports substantial overestimation of peer influence when homophily is not modeled. [S30]
+  - Supported: It provides a method to separate influence from homophily in dynamic networks, changing diffusion effect sizes. [S30]
+
+### S31 — Ugander et al. (2012) — Structural diversity in social contagion
+- Why it matters:
+  - Shows that adoption probability depends on exposure across multiple network components, not just the count of exposures. [S31]
+- Extracted quote (≤25 words):
+  - “the probability of contagion is tightly controlled by the number of connected components in an individual’s contact neighborhood” [S31]
+- Key takeaways (with status):
+  - Supported: Structural diversity (distinct social circles) predicts adoption better than raw exposure count. [S31]
+  - Supported: This supports “complex contagion” mechanisms needing reinforcement from separate sources. [S31]
+
+### S32 — Romero, Meeder, Kleinberg (2011) — Topic-dependent diffusion mechanics
+- Why it matters:
+  - Empirically distinguishes how different topics (idioms vs hashtags) diffuse, useful for operational proxy sensitivity in memetics. [S32]
+- Extracted quote (≤25 words):
+  - “We find significant variation in the ways that widely-used hashtags on different topics spread.” [S32]
+- Key takeaways (with status):
+  - Supported: Diffusion patterns vary systematically by topic, not just by network structure. [S32]
+  - Supported: The paper links some topics to complex-contagion-like spreading, challenging uniform “simple contagion” assumptions. [S32]
 
 ---
 

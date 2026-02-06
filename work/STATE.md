@@ -9,13 +9,13 @@
 - Portfolio/Pareto policy when criteria conflict.
 
 ## Current status
-- Last checkpoint: 20260205-1851
+- Last checkpoint: 20260206-0126
 - Deliverables status: All manifest deliverables present.
 
 ## Next actions (3–7)
-1. (Workflow) Set up a Codex App Automation for this repo (scheduled hourly, or as frequently as the Automations UI supports) using `prompts/02_codex_automation_prompt.txt`.
-2. (Workflow) Validate the repo in a fresh clone/container and decide whether `tmp/docs/Memetics_Research_Bundle_FPF.md` should be regenerated in setup (vs treated as local-only).
-3. (Research) If continuing: pick one frontier item from `work/problem_portfolio.md` and add 2–5 high-quality sources + extracted evidence.
+1. Add 2–5 sources for one remaining frontier problem (from `work/problem_portfolio.md`) and update `work/evidence_pack.md`.
+2. Run a manifest existence check and milestone validation commands; update `PLANS.md` progress log with results.
+3. Decide whether to regenerate `tmp/docs/Memetics_Research_Bundle_FPF.md` in setup or treat as local-only.
 
 ## Open questions / unknowns
 - Should the slice loop run via Codex App Automations (preferred) or via Codex Cloud tasks (requires a local orchestrator script)?

@@ -225,6 +225,29 @@
 - Alternate: UPenn landing page: `https://repository.upenn.edu/handle/20.500.14332/2253`
 - DOI: `https://doi.org/10.1126/science.1185231`
 
+### S30: Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks
+- Citation: Aral, Sinan; Muchnik, Lev; Sundararajan, Arun. “Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks.” *Proceedings of the National Academy of Sciences* 106(51): 21544–21549 (2009).
+- Evidence level: Primary (peer-reviewed; open access via PMC).
+- Source date: 2009-12-22 (issue date; PMC header lists Dec 10/22, 2009)
+- Accessed: 2026-02-06
+- Link: PMC full text: `https://pmc.ncbi.nlm.nih.gov/articles/PMC2799846/`
+- DOI: `https://doi.org/10.1073/pnas.0908800106`
+
+### S31: Structural diversity in social contagion
+- Citation: Ugander, Johan; Backstrom, Lars; Marlow, Cameron; Kleinberg, Jon. “Structural diversity in social contagion.” *Proceedings of the National Academy of Sciences* 109(16): 5962–5966 (2012).
+- Evidence level: Primary (peer-reviewed; open access via PMC).
+- Source date: 2012-04-17 (issue date per PNAS; PMC shows Apr 2 online)
+- Accessed: 2026-02-06
+- Link: PMC full text: `https://pmc.ncbi.nlm.nih.gov/articles/PMC3341012/`
+- DOI: `https://doi.org/10.1073/pnas.1116502109`
+
+### S32: Differences in the mechanics of information diffusion across topics (WWW 2011)
+- Citation: Romero, Daniel M.; Meeder, Brendan; Kleinberg, Jon. “Differences in the mechanics of information diffusion across topics: idioms, political hashtags, and complex contagion on Twitter.” In *Proceedings of the 20th International Conference on World Wide Web (WWW ’11)*, 695–704 (2011).
+- Evidence level: Primary (peer-reviewed conference paper).
+- Source date: 2011
+- Accessed: 2026-02-06
+- Link: DOI landing page: `https://doi.org/10.1145/1963405.1963503` (abstract accessed via BibSonomy: `https://www.bibsonomy.org/bibtex/2af9355f102c5ea5281145ee44ec6f87d/psinger`)
+
 ---
 
 ## Additional primaries (memetics critique; author-hosted PDFs)
