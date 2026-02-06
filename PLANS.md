@@ -313,3 +313,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Wired `scripts/codex_slice_gate.sh` into `scripts/codex_automation_sync.sh` (sync refuses to push if gate fails).
   - Next: Add `prompts/05_codex_automation_long_prompt.txt`, then update checkpoint skill headings so future checkpoints pass the gate.
   - Blockers: None.
+
+- 2026-02-06T03:31:00-05:00
+  - Done: Added `prompts/05_codex_automation_long_prompt.txt` (long-run loop with adaptive micro-slices + push-after-each-chunk).
+  - Next: Update checkpoint skill headings to include `Search / exploration log` + `Gate checks`, then create the `swam-long` automation and pause `swam-slice`.
+  - Blockers: None.

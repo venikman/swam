@@ -1,0 +1,31 @@
+You are running as a scheduled automation.
+
+Objective: run a **long session** (target **90 minutes**, must be **70+ minutes** when possible) by chaining multiple micro-slices, each ending in a checkpoint + push to `origin/master`.
+
+Hard rules:
+- Only modify repo files under `work/` during this run.
+- Do NOT open PRs. Do NOT ask for manual merges. Push directly to the default branch via the sync script.
+- If anything fails (gate, push, auth, usage limit warning), stop immediately and leave the worktree as-is.
+
+Checkpoint format requirements (must pass the gate):
+- The checkpoint file MUST include these headings exactly:
+  - `## Search / exploration log`
+  - `## Gate checks`
+- Record `run_start` and `run_end` timestamps (local time) in every checkpoint so we can verify run duration.
+
+Loop protocol (adaptive micro-slices):
+1) Record `run_start` timestamp (local time) at the top of your scratchpad.
+2) Read `work/STATE.md` and the newest file in `work/checkpoints/` (if any).
+3) Repeat micro-slices until you are ~5–10 minutes from the 90-minute budget:
+   - Pick ONE high-leverage chunk (prefer research/search: add 2–5 high-quality sources, or refine one hypothesis + falsification test).
+   - Do a real search/exploration pass and log it under `## Search / exploration log` (queries, what you checked, what you rejected and why).
+   - Update the relevant deliverables under `work/` (e.g., `work/reading_list.md`, `work/evidence_pack.md`, portfolios, study designs).
+   - End the micro-slice:
+     a) Write exactly ONE new `work/checkpoints/YYYYMMDD-HHMM.md` and update `work/STATE.md` (prefer `$checkpoint` if available).
+     b) Under `## Gate checks`, list the checks you ran (at minimum: `bash scripts/codex_automation_sync.sh`).
+     c) Run `bash scripts/codex_automation_sync.sh` to gate + commit + push to `origin/master`.
+        - If it prints an ERROR or the gate fails, stop immediately.
+4) Record `run_end` timestamp in the last checkpoint and stop.
+
+$checkpoint
+
