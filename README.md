@@ -76,6 +76,14 @@ CLI trigger (one command after you push the default branch):
 2) Load it: `source .codex/local.env`
 3) Trigger: `scripts/codex_cloud_trigger.sh resume`
 
+Autopilot loop (start once, run many slices):
+- Start it: `source .codex/local.env && scripts/codex_cloud_autopilot.sh --max-runs 0`
+- It will keep submitting Cloud tasks and pushing results to the remote default branch until:
+  - a task fails (e.g., usage limits), or
+  - you press Ctrl-C, or
+  - you set a finite `--max-runs`.
+- Safety: it refuses to commit if the cloud diff touches anything outside `work/`, and it enforces exactly one new `work/checkpoints/*` file per slice.
+
 Quick sanity checks after Run 1:
 - A PR exists with edits under `work/`.
 - Exactly one new file exists under `work/checkpoints/`.

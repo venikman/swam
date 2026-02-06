@@ -216,6 +216,17 @@ Make this repo’s Codex workflow more durable and low-friction by:
    - Rollback
      - `git revert <commit>`
 
+6. **Autopilot loop (start once, run many slices)**
+   - Steps
+     - Add `scripts/codex_cloud_autopilot.sh` loop wrapper.
+     - Add guardrails: only `work/` changes; exactly one new checkpoint; require `work/STATE.md` touched.
+     - Document in `README.md`.
+   - Validation:
+     - `bash -n scripts/codex_cloud_autopilot.sh`
+     - `rg -n \"codex cloud exec\" scripts/codex_cloud_autopilot.sh`
+   - Rollback
+     - `git revert <commit>`
+
 ## Decisions log (why changes)
 - Keep changes small and reversible; one milestone per commit.
 - Prefer repo-scoped skills/rules to reduce prompt bloat and permission stalls.

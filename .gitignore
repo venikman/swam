@@ -9,3 +9,6 @@ tmp/
 
 # Local Codex Cloud env id (do not commit)
 .codex/local.env
+
+# Codex CLI diagnostic logs (local)
+error.log
