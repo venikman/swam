@@ -6,3 +6,6 @@
 # Temp
 logs/
 tmp/
+
+# Local Codex Cloud env id (do not commit)
+.codex/local.env

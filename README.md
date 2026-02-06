@@ -73,6 +73,11 @@ Cloud prompts (copy/paste into Codex web tasks):
 - Bootstrap run: `prompts/03_codex_cloud_bootstrap_prompt.txt`
 - Resume loop: `prompts/04_codex_cloud_resume_prompt.txt`
 
+CLI trigger (one command after you push `master`):
+1) Set your env id (one-time): `cp .codex/local.env.example .codex/local.env` then edit it.
+2) Load it: `source .codex/local.env`
+3) Trigger: `scripts/codex_cloud_trigger.sh resume --branch master`
+
 Quick sanity checks after Run 1:
 - A PR exists with edits under `work/`.
 - Exactly one new file exists under `work/checkpoints/`.
