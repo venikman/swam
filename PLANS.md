@@ -227,6 +227,17 @@ Make this repo’s Codex workflow more durable and low-friction by:
    - Rollback
      - `git revert <commit>`
 
+7. **GitHub Actions autopilot (optional; start once, run slices)**
+   - Steps
+     - Add `.github/workflows/codex_autopilot.yml` (runs one slice, validates shape, opens/updates a PR).
+     - Gate scheduled runs behind `work/AUTOPILOT.enabled` so schedule does not burn budget unless enabled.
+     - Document setup in `README.md` (required secret `OPENAI_API_KEY`).
+   - Validation
+     - `ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/codex_autopilot.yml\")'`
+     - `rg -n \"openai/codex-action@v1\" .github/workflows/codex_autopilot.yml`
+   - Rollback
+     - `git revert <commit>`
+
 ## Decisions log (why changes)
 - Keep changes small and reversible; one milestone per commit.
 - Prefer repo-scoped skills/rules to reduce prompt bloat and permission stalls.
@@ -253,4 +264,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
 - 2026-02-05T22:50:43-05:00
   - Done: Added Milestone 5 (one-shot Cloud trigger) + implemented it (trigger script, local env template, README update, gitignore).
   - Next: Update PR branch and merge when ready.
+  - Blockers: None.
+
+- 2026-02-06T00:12:00-05:00
+  - Done: Added Milestone 7 (GitHub Actions autopilot) workflow + docs; scheduled runs gated behind `work/AUTOPILOT.enabled`.
+  - Next: Add repo secret `OPENAI_API_KEY`; (optional) commit `work/AUTOPILOT.enabled`; trigger workflow_dispatch once to verify PR flow.
   - Blockers: None.

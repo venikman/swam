@@ -1,0 +1,126 @@
+name: Codex autopilot (memetics slice)
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt_file:
+        description: Repo path to the prompt file for this run
+        required: false
+        default: prompts/02_codex_automation_prompt.txt
+      pr_branch:
+        description: Branch name to use/update for the autopilot PR
+        required: false
+        default: codex/autopilot
+  schedule:
+    # Every 30 minutes. Adjust or delete if you only want manual triggers.
+    - cron: "*/30 * * * *"
+
+concurrency:
+  group: codex-autopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  slice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Gate scheduled runs (avoid burning tokens when disabled)
+        id: gate
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Manual runs always execute one slice.
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Scheduled runs only execute when explicitly enabled in-repo.
+          if [[ -f work/AUTOPILOT.enabled ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Autopilot disabled (scheduled run)
+        if: steps.gate.outputs.enabled != 'true'
+        run: |
+          echo "Autopilot disabled."
+          echo "To enable scheduled runs, commit a file at: work/AUTOPILOT.enabled"
+
+      - name: Fail if OPENAI_API_KEY secret is missing
+        if: steps.gate.outputs.enabled == 'true' && secrets.OPENAI_API_KEY == ''
+        run: |
+          echo "Missing required secret: OPENAI_API_KEY" >&2
+          exit 2
+
+      - name: Run Codex (one slice)
+        if: steps.gate.outputs.enabled == 'true'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt-file: ${{ github.event.inputs.prompt_file || 'prompts/02_codex_automation_prompt.txt' }}
+          codex-args: '["--full-auto"]'
+          safety-strategy: drop-sudo
+          sandbox: workspace-write
+
+      - name: Validate changes are checkpoint-shaped
+        id: validate
+        if: steps.gate.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+          changed_paths="$(git status --porcelain | awk '{print $2}')"
+          disallowed="$(printf '%s\n' "${changed_paths}" | grep -Ev '^(work/)' || true)"
+          if [[ -n "${disallowed}" ]]; then
+            echo "Refusing: changes outside work/ detected:" >&2
+            printf '%s\n' "${disallowed}" >&2
+            exit 2
+          fi
+
+          if ! printf '%s\n' "${changed_paths}" | grep -qx 'work/STATE.md'; then
+            echo "Refusing: expected work/STATE.md to be modified." >&2
+            exit 2
+          fi
+
+          new_checkpoint_files="$(git status --porcelain | awk '$1=="??"{print $2}' | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' || true)"
+          checkpoint_count="$(printf '%s\n' "${new_checkpoint_files}" | sed '/^$/d' | wc -l | tr -d ' ')"
+          if [[ "${checkpoint_count}" != "1" ]]; then
+            echo "Refusing: expected exactly 1 new checkpoint file, found ${checkpoint_count}." >&2
+            printf '%s\n' "${new_checkpoint_files}" >&2
+            exit 2
+          fi
+
+      - name: Create or update PR
+        if: steps.gate.outputs.enabled == 'true' && steps.validate.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ github.token }}
+          branch: ${{ github.event.inputs.pr_branch || 'codex/autopilot' }}
+          base: ${{ github.event.repository.default_branch }}
+          add-paths: |
+            work/
+          commit-message: "codex: autopilot slice"
+          title: "Codex autopilot slice (work/)"
+          body: |
+            Automated Codex slice run.
+
+            Expected shape:
+            - work/STATE.md updated
+            - exactly one new work/checkpoints/YYYYMMDD-HHMM.md
