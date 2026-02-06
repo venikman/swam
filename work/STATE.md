@@ -9,12 +9,12 @@
 - Portfolio/Pareto policy when criteria conflict.
 
 ## Current status
-- Last checkpoint: 20260206-0251
-- Deliverables status: All manifest deliverables present.
+- Last checkpoint: 20260206-0415
+- Deliverables status: All manifest deliverables present; evidence pack expanded with operationalization sources (S37–S39).
 
 ## Next actions (3–7)
-1. Add 2–5 sources for one remaining frontier problem (if any still thin) and update `work/evidence_pack.md`.
-2. Run a manifest existence check and milestone validation commands; update `PLANS.md` progress log with results.
+1. Consider adding one more primary source on meme-tracking / quote diffusion if a stable PDF becomes available.
+2. Run a manifest existence check and milestone validation commands; update `PLANS.md` progress log with results (if allowed).
 3. Decide whether to regenerate `tmp/docs/Memetics_Research_Bundle_FPF.md` in setup or treat as local-only.
 
 ## Open questions / unknowns

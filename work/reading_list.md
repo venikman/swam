@@ -225,6 +225,29 @@
 - Alternate: UPenn landing page: `https://repository.upenn.edu/handle/20.500.14332/2253`
 - DOI: `https://doi.org/10.1126/science.1185231`
 
+### S37: MemeTracker (project description / operationalization)
+- Citation: Leskovec, Jure; Backstrom, Lars; Kleinberg, Jon. “MemeTracker: About.” SNAP (Stanford).
+- Evidence level: Secondary (project page describing operationalization and data scale).
+- Source date: 2008 (page copyright; exact publication date not listed)
+- Accessed: 2026-02-06
+- Link: `https://snap.stanford.edu/memetracker/about.html`
+
+### S38: Competition and Success in the Meme Pool (Quickmeme case study)
+- Citation: Coscia, Michele. “Competition and Success in the Meme Pool: a Case Study on Quickmeme.com.” arXiv:1304.1712 (2013).
+- Evidence level: Primary (preprint; ICWSM 2013 paper).
+- Source date: 2013-04-05 (arXiv submission date)
+- Accessed: 2026-02-06
+- Link: `https://arxiv.org/abs/1304.1712`
+- DOI: `https://doi.org/10.48550/arXiv.1304.1712`
+
+### S39: Contextualizing Internet Memes Across Social Media Platforms
+- Citation: Joshi, Saurav; Ilievski, Filip; Luceri, Luca. “Contextualizing Internet Memes Across Social Media Platforms.” arXiv:2311.11157 (2023; v2 posted 2024-02-26).
+- Evidence level: Primary (preprint; methods + dataset construction).
+- Source date: 2024-02-26 (arXiv v2)
+- Accessed: 2026-02-06
+- Link: `https://arxiv.org/abs/2311.11157`
+- DOI: `https://doi.org/10.48550/arXiv.2311.11157`
+
 ### S30: Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks
 - Citation: Aral, Sinan; Muchnik, Lev; Sundararajan, Arun. “Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks.” *Proceedings of the National Academy of Sciences* 106(51): 21544–21549 (2009).
 - Evidence level: Primary (peer-reviewed; open access via PMC).

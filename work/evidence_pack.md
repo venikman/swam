@@ -23,6 +23,8 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Critique of memetics from this camp: [S28] [S29]
 - **Online diffusion / “internet memes” operational proxies:**
   - Hashtags as meme proxies; limited-attention competition: [S24]
+  - Quote/phrase tracking across news + blogs (meme proxy as phrases): [S37]
+  - Platform-specific meme post datasets (image/macro memes across platforms): [S38] [S39]
   - Complex contagion / reinforcement: [S26] [S32] [S33] [S34] [S35] [S36]
   - Structural diversity vs single-channel exposure: [S31]
   - Influence vs homophily confound in diffusion estimates: [S30]
@@ -96,6 +98,36 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Supported: Uses Twitter hashtags as operational proxies for memes and retweets as a transmission mechanism. [S24]
   - Supported: Claims (in abstract) that popularity/persistence heterogeneity can be explained via limited attention + network structure “without the need to assume different intrinsic values among ideas.” [S24]
   - Caution: The “hashtag=meme” proxy is context-bound and resolution-dependent; treat as an operationalization, not a definition. [S24]
+
+### S37 — MemeTracker (Stanford SNAP) — Quote/phrase tracking as meme proxy
+- Why it matters:
+  - Provides an explicit operationalization of “meme” as short, recurring quotes/phrases across news/blogs, with large-scale tracking. [S37]
+- Extracted quote (≤25 words):
+  - “We track the quotes and phrases that appear most frequently over time across this entire online news spectrum.” [S37]
+- Key takeaways (with status):
+  - Supported: Treats quotes/phrases as the unit of diffusion (“meme”) across news and blog sources. [S37]
+  - Supported: Describes a high-volume pipeline spanning large numbers of sources, making the proxy measurable at scale. [S37]
+  - Caution: The proxy is text-phrase–based and primarily covers news/blog ecosystems; generalization to other media requires explicit mapping. [S37]
+
+### S38 — Coscia (2013) — Quickmeme dataset as operational unit
+- Why it matters:
+  - Offers a concrete platform-bound operationalization of “meme” via Quickmeme templates and their instances, enabling empirical distributional claims. [S38]
+- Extracted quote (≤25 words):
+  - “We downloaded data about memes from a well-known website hosting hundreds of different memes and thousands of their implementations.” [S38]
+- Key takeaways (with status):
+  - Supported: Defines the operational unit as platform-hosted meme templates and their image-macro implementations. [S38]
+  - Supported: Uses large-scale empirical data to study success/competition among meme templates. [S38]
+  - Caution: The operational unit is platform-specific and may not transfer to other ecosystems without adjustment. [S38]
+
+### S39 — Joshi et al. (2024) — Cross-platform meme post collection
+- Why it matters:
+  - Establishes a cross-platform operationalization for meme posts, bridging multiple social platforms with a shared knowledge-graph framing. [S39]
+- Extracted quote (≤25 words):
+  - “We collect thousands of potential internet meme posts from two social media platforms, namely Reddit and Discord.” [S39]
+- Key takeaways (with status):
+  - Supported: Uses cross-platform meme post collection (Reddit + Discord) as the operational unit for analysis. [S39]
+  - Supported: Builds a structured representation (knowledge graph) to relate meme instances across platforms. [S39]
+  - Caution: Coverage is limited to specific platforms and collection pipelines; generalization requires additional platform mappings. [S39]
 
 ### S26 — Centola (2010) — Complex contagion and reinforcement (online experiment manuscript)
 - Why it matters:
