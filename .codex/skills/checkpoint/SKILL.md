@@ -7,10 +7,14 @@ description: Use at end of a run or when blocked. Creates ONE new work/checkpoin
 1) Pick a timestamp in `YYYYMMDD-HHMM` (local time). If a file already exists for that minute, increment the minute until you get a unique filename.
 
 2) Write exactly ONE new checkpoint file: `work/checkpoints/<TIMESTAMP>.md`
-   - What changed (2–6 bullets; include files touched)
-   - Evidence added (links + where recorded)
-   - Decisions made (and why; include ADR refs if updated)
-   - Next actions (3–7 bullets, ordered)
+   - Use headings (so automation gates can validate structure):
+     - `## Search / exploration log` (queries, where you looked, rejects + why)
+     - `## Gate checks` (commands/checks run + pass/fail notes)
+   - Also include:
+     - What changed (2–6 bullets; include files touched)
+     - Evidence added (links + where recorded)
+     - Decisions made (and why; include ADR refs if updated)
+     - Next actions (3–7 bullets, ordered)
 
 3) Update `work/STATE.md`
    - Update `Last checkpoint:` to `<TIMESTAMP>`
@@ -18,4 +22,3 @@ description: Use at end of a run or when blocked. Creates ONE new work/checkpoin
    - Replace `Next actions` with the same 3–7 ordered items
 
 4) Stop.
-
