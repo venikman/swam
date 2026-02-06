@@ -239,6 +239,22 @@ Make this repo’s Codex workflow more durable and low-friction by:
    - Rollback
      - Disable/pause the Automation in the Codex App.
 
+8. **Long-run automation (70+ min) + slice gate**
+   - Steps
+     - Add `scripts/codex_slice_gate.sh` (hard-fail on structural invariants; warn on “thin slice”).
+     - Run the gate from `scripts/codex_automation_sync.sh` before commit/push.
+     - Add `prompts/05_codex_automation_long_prompt.txt` to loop adaptive micro-slices (~90 min total) and push after each.
+     - Update checkpoint skill to require checkpoint sections:
+       - `## Search / exploration log`
+       - `## Gate checks`
+     - Create a new Codex App Automation `swam-long` scheduled every 2 hours; pause `swam-slice` while testing.
+   - Validation
+     - `bash -n scripts/codex_slice_gate.sh`
+     - `rg -n \"codex_slice_gate\" scripts/codex_automation_sync.sh`
+     - `test -f prompts/05_codex_automation_long_prompt.txt`
+   - Rollback
+     - `git revert <commit>` (gate/sync/prompt changes), and pause/disable `swam-long` in the Codex App.
+
 ## Decisions log (why changes)
 - Keep changes small and reversible; one milestone per commit.
 - Prefer repo-scoped skills/rules to reduce prompt bloat and permission stalls.
@@ -287,3 +303,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Added `scripts/codex_automation_sync.sh` so automations commit + push their slice outputs to `origin/master` automatically (no manual worktree merge).
   - Next: Update the automation prompt to run `bash scripts/codex_automation_sync.sh` after `$checkpoint`, then run one "Test" to verify it pushes successfully.
   - Blockers: None (if git auth prompts, push will fail; switch repo remote to SSH or ensure keychain creds work non-interactively).
+
+- 2026-02-06T03:25:00-05:00
+  - Done: Started Milestone 8 by adding `scripts/codex_slice_gate.sh` (automation slice gate: scope + checkpoint structure + source cross-checks).
+  - Next: Wire the gate into `scripts/codex_automation_sync.sh`, then add the long-run automation prompt + update checkpoint skill headings.
+  - Blockers: None.
