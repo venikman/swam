@@ -204,6 +204,18 @@ Make this repo’s Codex workflow more durable and low-friction by:
    - Validation: `rg -n \"gpt-5\\.3-codex|gpt-5\\.1-codex-mini|18 ?000|5h\" README.md prompts/00_codex_thread_prompt.md`
    - Rollback: `git revert <commit>`
 
+5. **One-shot Cloud trigger (push master, trigger once)**
+   - Steps
+     - Add `scripts/codex_cloud_trigger.sh` wrapper for `codex cloud exec`.
+     - Add `.codex/local.env.example` + ignore `.codex/local.env`.
+     - Update `README.md` with the one-command CLI trigger flow.
+   - Validation:
+     - `bash -n scripts/codex_cloud_trigger.sh`
+     - `test -f .codex/local.env.example`
+     - `rg -n \"codex cloud exec\" scripts/codex_cloud_trigger.sh`
+   - Rollback
+     - `git revert <commit>`
+
 ## Decisions log (why changes)
 - Keep changes small and reversible; one milestone per commit.
 - Prefer repo-scoped skills/rules to reduce prompt bloat and permission stalls.
@@ -225,4 +237,9 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Milestone 3 complete (Codex cloud setup script). Commit: `38ea5ad`.
   - Done: Milestone 4 complete (docs alignment: README + thread prompt). Commit: `b6ab49d`.
   - Next: Run final repo validations and keep the hardening changes conservative over time (avoid broad Rules prefixes).
+  - Blockers: None.
+
+- 2026-02-05T22:50:43-05:00
+  - Done: Added Milestone 5 (one-shot Cloud trigger) + implemented it (trigger script, local env template, README update, gitignore).
+  - Next: Update PR branch and merge when ready.
   - Blockers: None.
