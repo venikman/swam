@@ -308,3 +308,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Started Milestone 8 by adding `scripts/codex_slice_gate.sh` (automation slice gate: scope + checkpoint structure + source cross-checks).
   - Next: Wire the gate into `scripts/codex_automation_sync.sh`, then add the long-run automation prompt + update checkpoint skill headings.
   - Blockers: None.
+
+- 2026-02-06T03:28:00-05:00
+  - Done: Wired `scripts/codex_slice_gate.sh` into `scripts/codex_automation_sync.sh` (sync refuses to push if gate fails).
+  - Next: Add `prompts/05_codex_automation_long_prompt.txt`, then update checkpoint skill headings so future checkpoints pass the gate.
+  - Blockers: None.

@@ -26,6 +26,12 @@ if [ -z "$(git status --porcelain=v1)" ]; then
   exit 0
 fi
 
+# Gate: refuse to push if the slice is structurally invalid or missing required
+# audit sections (search log + gate checks).
+if ! bash scripts/codex_slice_gate.sh; then
+  die "slice gate failed"
+fi
+
 # Collect all changed paths (staged, unstaged, untracked)
 tmp_list="$(mktemp)"
 trap 'rm -f "$tmp_list"' EXIT
@@ -77,4 +83,3 @@ fi
 
 git push origin HEAD:master
 echo "codex_automation_sync: pushed checkpoint $ckpt_id to origin/master"
-
