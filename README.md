@@ -21,16 +21,36 @@ Tip: prefer resumable slices + external memory (`work/STATE.md`) over one giant 
 Use **Codex app Automations** to “re-trigger” progress periodically:
 - Create an Automation scheduled every 15 min (or 30 min).
 - Use `prompts/02_codex_automation_prompt.txt` as the automation prompt.
-- Each run should create exactly one new checkpoint file under `/work/checkpoints/`.
+- Each run should end by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new `work/checkpoints/YYYYMMDD-HHMM.md`).
 
-## Pro usage reality check (included usage)
-Codex usage on ChatGPT plans is limited per shared ~18 000 s window and varies with task size/context.
-To stretch included Pro usage:
+Repo-scoped Codex assets:
+- Skill: `.agents/skills/checkpoint/SKILL.md`
+- Rules allowlist: `.codex/rules/safe-default.rules`
+- Cloud setup script: `scripts/codex_setup.sh`
+
+## Included usage limits (ChatGPT plans)
+Codex included usage is measured in rolling **5-hour (18,000 s) windows** and varies with task size/context.
+Per the Codex pricing page (accessed **2026-02-06**):
+
+| Plan | Local messages / 5h | Cloud tasks / 5h | Code reviews / week |
+| --- | --- | --- | --- |
+| ChatGPT Plus | 45–225 | 10–60 | 10–25 |
+| ChatGPT Pro | 300–1500 | 50–400 | 100–250 |
+
+To stretch included usage:
 - keep prompts/context small (write state to files),
-- use local tasks where possible,
-- prefer GPT-5.1-Codex-Mini for routine work, reserve GPT-5.3-Codex for hard steps.
+- prefer `gpt-5.1-codex-mini` for routine work (up to ~4x higher local-message limits), reserve `gpt-5.3-codex` for hard steps,
+- disable MCP servers you don’t need (they add context and burn budget).
 
 Rationale: automation runs create durable progress via repo artifacts, so you can stop/restart without losing state.
+
+References:
+- Codex pricing: https://developers.openai.com/codex/pricing/ (accessed 2026-02-06)
+- Codex models: https://developers.openai.com/codex/models/ (accessed 2026-02-06)
+
+## Cloud environments (optional)
+If you use Codex Cloud tasks, set the environment setup script to `scripts/codex_setup.sh`.
+It installs `pandoc`/`ripgrep`/`git` if missing (Debian/Ubuntu `apt-get`).
 
 ## If you prefer the CLI
 - `cd` into this folder
@@ -47,3 +67,4 @@ Rationale: automation runs create durable progress via repo artifacts, so you ca
 - Keep secrets out of this repo.
 - Use git checkpoints before/after risky steps.
 - If the agent proposes destructive actions, require explicit human confirmation.
+- If you enable agent internet access, start with a domain allowlist and treat retrieved content as untrusted input (prompt injection is real).

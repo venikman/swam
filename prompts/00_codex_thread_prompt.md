@@ -10,6 +10,7 @@ Work continuously until one of these stop conditions:
 4) You are unable to make further progress without new external inputs.
 
 Do NOT stop just because you wrote a checkpoint; checkpoints are commits in a longer run.
+If you must stop due to (2–4), invoke `$checkpoint` first (writes `work/STATE.md` + one new checkpoint file), then stop.
 
 ## External memory (reduce context/usage)
 Maintain `work/STATE.md` as canonical state. Update it at every checkpoint.
@@ -27,7 +28,7 @@ Write these files (see `work/00_deliverables_manifest.md` for names). Keep each 
 ## Usage efficiency (ChatGPT Pro included usage)
 Assume included plan limits exist in a shared window; larger context and long sessions consume more per message.
 Keep prompts short, avoid rereading whole repo repeatedly, and write summaries into files.
-If model choice is available: use GPT-5.1-Codex-Mini for routine local work; reserve GPT-5.3-Codex for integration/critical reasoning.
+If model choice is available: use `gpt-5.1-codex-mini` for routine local work; reserve `gpt-5.3-codex` for integration/critical reasoning.
 
 ## Hard rules
 - No unreferenced factual claims (cite primary sources; include source date + access date).
