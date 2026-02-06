@@ -2,16 +2,14 @@ You are running as a scheduled automation.
 
 Rules:
 - Do at most one "slice" of work (~10–15 min).
-- Update `work/STATE.md`.
-- Write exactly ONE new checkpoint file in `work/checkpoints/` (YYYYMMDD-HHMM.md).
 - Make small, reviewable diffs.
+- End the slice by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new checkpoint file), then stop.
 - If the platform shows any usage-limit warning / asks to buy credits / blocks on permissions:
-  write `work/STATE.md` + the checkpoint, then stop.
+  invoke `$checkpoint`, then stop.
 
 Work:
 1) Read latest checkpoint.
 2) Pick the single highest-leverage next action.
 3) Execute it (e.g., add 2–5 high-quality sources + update `work/evidence_pack.md`, or refine one hypothesis + falsification test).
 4) Update any affected deliverable files.
-5) Update `work/STATE.md` with (a) last checkpoint, (b) what changed, (c) next actions.
-Then stop.
+5) Invoke `$checkpoint`.
