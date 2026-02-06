@@ -53,10 +53,10 @@ fi
 # Accept either:
 # - untracked (??)
 # - staged as a new file (A*), in case the slice staged files early.
-ckpt_paths="$(
+ ckpt_paths="$(
   git status --porcelain=v1 -- "work/checkpoints/*.md" \
     | awk '($1=="??" || substr($1,1,1)=="A"){print $2}' \
-    | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' \
+    | grep -E '^work/checkpoints/[0-9]{8}-[0-9]{4}\.md$' \
     || true
 )"
 ckpt_count="$(printf '%s\n' "$ckpt_paths" | sed '/^$/d' | wc -l | tr -d ' ')"
