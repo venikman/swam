@@ -2,6 +2,19 @@
 
 You are running inside a git repo. **Write progress as files** so the work is resumable.
 
+## Autonomy contract (push single-run length)
+Work continuously until one of these stop conditions:
+1) All deliverables in `work/00_deliverables_manifest.md` are complete, OR
+2) You need explicit user permission (dangerous command/network) and cannot proceed, OR
+3) The platform/UI shows a usage-limit warning or asks to buy credits, OR
+4) You are unable to make further progress without new external inputs.
+
+Do NOT stop just because you wrote a checkpoint; checkpoints are commits in a longer run.
+
+## External memory (reduce context/usage)
+Maintain `work/STATE.md` as canonical state. Update it at every checkpoint.
+When resuming, read `work/STATE.md` + the newest checkpoint, not the entire history.
+
 ## Read first (authoritative inputs)
 1) `spec/Memetics_Research_Bundle_FPF.docx` (task spec)
 2) `spec/FPF-Spec.md` (method library; treat as constraints/patterns where applicable)
@@ -11,6 +24,11 @@ You are running inside a git repo. **Write progress as files** so the work is re
 ## Output contract
 Write these files (see `work/00_deliverables_manifest.md` for names). Keep each file well-structured and citation-heavy.
 
+## Usage efficiency (ChatGPT Pro included usage)
+Assume included plan limits exist in a shared window; larger context and long sessions consume more per message.
+Keep prompts short, avoid rereading whole repo repeatedly, and write summaries into files.
+If model choice is available: use GPT-5.1-Codex-Mini for routine local work; reserve GPT-5.3-Codex for integration/critical reasoning.
+
 ## Hard rules
 - No unreferenced factual claims (cite primary sources; include source date + access date).
 - No silent scalarization: when criteria conflict, return a **portfolio / Pareto frontier**, not a single “winner”.
@@ -19,6 +37,7 @@ Write these files (see `work/00_deliverables_manifest.md` for names). Keep each 
 
 ## Checkpoint loop (durable progress)
 Every ~900 s (15 min) OR at the end of each major phase (whichever comes first):
+- Update `work/STATE.md`
 - Create a new file: `work/checkpoints/YYYYMMDD-HHMM.md`
 - Include:
   1) What you did (bullet list)

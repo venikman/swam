@@ -16,10 +16,19 @@ This repo is a **stateful workspace** for a long-horizon memetics research sprin
 4) Let it run. Review diffs; commit checkpoints.
 
 ## Long-running mode (multi-hour)
+Tip: prefer resumable slices + external memory (`work/STATE.md`) over one giant context window.
+
 Use **Codex app Automations** to “re-trigger” progress periodically:
 - Create an Automation scheduled every 15 min (or 30 min).
 - Use `prompts/02_codex_automation_prompt.txt` as the automation prompt.
 - Each run should create exactly one new checkpoint file under `/work/checkpoints/`.
+
+## Pro usage reality check (included usage)
+Codex usage on ChatGPT plans is limited per shared ~18 000 s window and varies with task size/context.
+To stretch included Pro usage:
+- keep prompts/context small (write state to files),
+- use local tasks where possible,
+- prefer GPT-5.1-Codex-Mini for routine work, reserve GPT-5.3-Codex for hard steps.
 
 Rationale: automation runs create durable progress via repo artifacts, so you can stop/restart without losing state.
 
