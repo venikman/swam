@@ -248,6 +248,21 @@
 - Link: `https://arxiv.org/abs/2311.11157`
 - DOI: `https://doi.org/10.48550/arXiv.2311.11157`
 
+### S40: Meme-tracking and the Dynamics of the News Cycle (KDD 2009)
+- Citation: Leskovec, Jure; Backstrom, Lars; Kleinberg, Jon. “Meme-tracking and the Dynamics of the News Cycle.” In *Proceedings of the 15th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD ’09)*, 497–506 (2009).
+- Evidence level: Primary (peer-reviewed conference paper; PDF hosted by Cornell).
+- Source date: 2009-06-28 (conference start date; paper year 2009)
+- Accessed: 2026-02-06
+- Link: PDF (Cornell): `http://www.cs.cornell.edu/home/kleinber/kdd09-quotes.pdf`
+- DOI: `https://doi.org/10.1145/1557019.1557077`
+
+### S41: SNAP dataset page — 96 million Memetracker memes
+- Citation: Stanford Network Analysis Project (SNAP). “96 million memes from Memetracker.” SNAP dataset page.
+- Evidence level: Secondary (official dataset page with counts).
+- Source date: n.d. (page undated)
+- Accessed: 2026-02-06
+- Link: `https://snap.stanford.edu/data/memetracker9.html`
+
 ### S30: Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks
 - Citation: Aral, Sinan; Muchnik, Lev; Sundararajan, Arun. “Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks.” *Proceedings of the National Academy of Sciences* 106(51): 21544–21549 (2009).
 - Evidence level: Primary (peer-reviewed; open access via PMC).

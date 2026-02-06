@@ -109,6 +109,25 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Supported: Describes a high-volume pipeline spanning large numbers of sources, making the proxy measurable at scale. [S37]
   - Caution: The proxy is text-phrase–based and primarily covers news/blog ecosystems; generalization to other media requires explicit mapping. [S37]
 
+### S40 — Leskovec et al. (2009) — Meme-tracking as quote diffusion in news/blogs
+- Why it matters:
+  - Defines a concrete tracking framework for short, distinctive phrases as they propagate across online text streams. [S40]
+- Extracted quote (≤25 words):
+  - “We develop a framework for tracking short, distinctive phrases that travel relatively intact through on-line text.” [S40]
+- Key takeaways (with status):
+  - Supported: Establishes a phrase-based unit of diffusion for memetracking in online news/blog sources. [S40]
+  - Supported: Provides a peer-reviewed empirical basis for the “quote/phrase as meme” proxy used in later datasets. [S40]
+  - Caution: The operational unit is textual and channel-specific; mapping to other media forms needs explicit justification. [S40]
+
+### S41 — SNAP Memetracker dataset page — Scale counts for memetracker corpus
+- Why it matters:
+  - Documents dataset-scale counts for the Memetracker corpus used in diffusion analysis pipelines. [S41]
+- Extracted quote (≤25 words):
+  - “Number of documents 96,608,034. Number of memes 210,999,824. Number of links 418,237,269.” [S41]
+- Key takeaways (with status):
+  - Supported: Reports corpus-scale counts for documents, memes, and links in the Memetracker dataset. [S41]
+  - Caution: Dataset counts are descriptive metadata; they do not validate causal interpretations without method details. [S41]
+
 ### S38 — Coscia (2013) — Quickmeme dataset as operational unit
 - Why it matters:
   - Offers a concrete platform-bound operationalization of “meme” via Quickmeme templates and their instances, enabling empirical distributional claims. [S38]
