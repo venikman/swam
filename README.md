@@ -19,29 +19,9 @@ This repo is a **stateful workspace** for a long-horizon memetics research sprin
 Tip: prefer resumable slices + external memory (`work/STATE.md`) over one giant context window.
 
 Use **Codex app Automations** to “re-trigger” progress periodically:
-- Create an Automation scheduled every 15 min (or 30 min).
+- Create an Automation scheduled hourly (or as frequently as the Automations UI allows).
 - Use `prompts/02_codex_automation_prompt.txt` as the automation prompt.
 - Each run should end by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new `work/checkpoints/YYYYMMDD-HHMM.md`).
-
-## GitHub Actions autopilot (optional; API-key billed)
-If you want the slice loop to run in GitHub Actions (no laptop), this repo includes:
-- Workflow: `.github/workflows/codex_autopilot.yml` (runs one slice, then opens/updates a PR)
-
-How it works:
-- Runs Codex via `openai/codex-action@v1` using `prompts/02_codex_automation_prompt.txt`.
-- Enforces guardrails before opening/updating a PR:
-  - only `work/` may change,
-  - `work/STATE.md` must be modified,
-  - exactly one new `work/checkpoints/YYYYMMDD-HHMM.md` must be created.
-- Scheduled runs are **gated**: schedule will only run when `work/AUTOPILOT.enabled` exists on the default branch.
-
-One-time setup:
-1) In GitHub: Settings -> Secrets and variables -> Actions -> add secret `OPENAI_API_KEY`.
-2) (Optional) Enable scheduled runs by committing `work/AUTOPILOT.enabled` to the default branch.
-3) Trigger once manually: Actions -> "Codex autopilot (memetics slice)" -> Run workflow.
-
-Notes:
-- This uses **API billing**, not ChatGPT plan included Codex Cloud usage.
 
 Repo-scoped Codex assets:
 - Skill: `.agents/skills/checkpoint/SKILL.md`

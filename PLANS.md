@@ -227,16 +227,17 @@ Make this repo’s Codex workflow more durable and low-friction by:
    - Rollback
      - `git revert <commit>`
 
-7. **GitHub Actions autopilot (optional; start once, run slices)**
+7. **Codex App automation (preferred; ChatGPT plan included)**
    - Steps
-     - Add `.github/workflows/codex_autopilot.yml` (runs one slice, validates shape, opens/updates a PR).
-     - Gate scheduled runs behind `work/AUTOPILOT.enabled` so schedule does not burn budget unless enabled.
-     - Document setup in `README.md` (required secret `OPENAI_API_KEY`).
+     - In the Codex App, create an Automation scheduled hourly (or as frequently as the UI supports).
+     - Use `prompts/02_codex_automation_prompt.txt` as the automation prompt.
+     - Ensure every run ends by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new file under `work/checkpoints/YYYYMMDD-HHMM.md`).
    - Validation
-     - `ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/codex_autopilot.yml\")'`
-     - `rg -n \"openai/codex-action@v1\" .github/workflows/codex_autopilot.yml`
+     - After one automation run, verify:
+       - `test -f work/STATE.md && git status --porcelain | rg -n '^ M work/STATE\\.md$'`
+       - `git status --porcelain | rg -n '^\\?\\? work/checkpoints/[0-9]{8}-[0-9]{4}\\.md$' | wc -l` reports `1`
    - Rollback
-     - `git revert <commit>`
+     - Disable/pause the Automation in the Codex App.
 
 ## Decisions log (why changes)
 - Keep changes small and reversible; one milestone per commit.
@@ -267,6 +268,11 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Blockers: None.
 
 - 2026-02-06T00:12:00-05:00
-  - Done: Added Milestone 7 (GitHub Actions autopilot) workflow + docs; scheduled runs gated behind `work/AUTOPILOT.enabled`.
-  - Next: Add repo secret `OPENAI_API_KEY`; (optional) commit `work/AUTOPILOT.enabled`; trigger workflow_dispatch once to verify PR flow.
+  - Done: Added Milestone 7 (GitHub Actions autopilot) workflow + docs (later removed 2026-02-06T00:27:00-05:00 by request).
+  - Next: None (workflow removed).
+  - Blockers: None.
+
+- 2026-02-06T00:27:00-05:00
+  - Done: Removed the GitHub Actions autopilot workflow (`.github/workflows/codex_autopilot.yml`) and reverted docs/plans to prefer Codex App Automations.
+  - Next: Configure a Codex App Automation to run `prompts/02_codex_automation_prompt.txt` on an hourly schedule.
   - Blockers: None.
