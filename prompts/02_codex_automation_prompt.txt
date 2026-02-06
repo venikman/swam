@@ -3,9 +3,9 @@ You are running as a scheduled automation.
 Rules:
 - Do at most one "slice" of work (~10–15 min).
 - Make small, reviewable diffs.
-- End the slice by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new checkpoint file), then stop.
+- End the slice by writing exactly one checkpoint + updating `work/STATE.md` (prefer `$checkpoint` if supported; otherwise follow `.codex/skills/checkpoint/SKILL.md`), then stop.
 - If the platform shows any usage-limit warning / asks to buy credits / blocks on permissions:
-  invoke `$checkpoint`, then stop.
+  still write the checkpoint + update `work/STATE.md`, then stop.
 
 Work:
 1) Read latest checkpoint.

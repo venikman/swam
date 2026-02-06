@@ -28,7 +28,7 @@ Write these files (see `work/00_deliverables_manifest.md` for names). Keep each 
 ## Usage efficiency (ChatGPT Pro included usage)
 Assume included plan limits exist in a shared window; larger context and long sessions consume more per message.
 Keep prompts short, avoid rereading whole repo repeatedly, and write summaries into files.
-If model choice is available: use `gpt-5.1-codex-mini` for routine local work; reserve `gpt-5.3-codex` for integration/critical reasoning.
+If model choice is available: use `gpt-5.1-codex-mini` for routine local work; reserve `gpt-5.2-codex` for integration/critical reasoning.
 
 ## Hard rules
 - No unreferenced factual claims (cite primary sources; include source date + access date).

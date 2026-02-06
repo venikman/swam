@@ -24,7 +24,7 @@ Use **Codex app Automations** to “re-trigger” progress periodically:
 - Each run should end by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new `work/checkpoints/YYYYMMDD-HHMM.md`).
 
 Repo-scoped Codex assets:
-- Skill: `.agents/skills/checkpoint/SKILL.md`
+- Skill: `.codex/skills/checkpoint/SKILL.md`
 - Rules allowlist: `.codex/rules/safe-default.rules`
 - Cloud setup script: `scripts/codex_setup.sh`
 
@@ -39,7 +39,7 @@ Per the Codex pricing page (accessed **2026-02-06**):
 
 To stretch included usage:
 - keep prompts/context small (write state to files),
-- prefer `gpt-5.1-codex-mini` for routine work (up to ~4x higher local-message limits), reserve `gpt-5.3-codex` for hard steps,
+- prefer `gpt-5.1-codex-mini` for routine work (up to ~4x higher local-message limits), reserve `gpt-5.2-codex` for hard steps,
 - disable MCP servers you don’t need (they add context and burn budget).
 
 Rationale: automation runs create durable progress via repo artifacts, so you can stop/restart without losing state.
@@ -47,10 +47,42 @@ Rationale: automation runs create durable progress via repo artifacts, so you ca
 References:
 - Codex pricing: https://developers.openai.com/codex/pricing/ (accessed 2026-02-06)
 - Codex models: https://developers.openai.com/codex/models/ (accessed 2026-02-06)
+- Codex Quickstart: https://developers.openai.com/codex/quickstart/ (accessed 2026-02-06)
+- Codex web overview: https://developers.openai.com/codex/cloud/ (accessed 2026-02-06)
+- Cloud environments: https://developers.openai.com/codex/cloud/environments/ (accessed 2026-02-06)
+- Agent internet access: https://developers.openai.com/codex/cloud/internet-access/ (accessed 2026-02-06)
+- Skills overview: https://developers.openai.com/codex/skills/overview/ (accessed 2026-02-06)
+- Team config: https://developers.openai.com/codex/team-config/ (accessed 2026-02-06)
+- Introducing Codex (blog): https://openai.com/index/introducing-codex/ (accessed 2026-02-06)
+- Introducing the Codex app (blog): https://openai.com/index/introducing-the-codex-app/ (accessed 2026-02-06)
 
 ## Cloud environments (optional)
-If you use Codex Cloud tasks, set the environment setup script to `scripts/codex_setup.sh`.
-It installs `pandoc`/`ripgrep`/`git` if missing (Debian/Ubuntu `apt-get`).
+Codex Cloud tasks are usually **1–30 min**, so “long-running” work is best done as many short cloud tasks chained together via repo state (`work/STATE.md` + `work/checkpoints/`).
+
+One-time setup:
+1) In Codex web, connect GitHub and select `venikman/swam` as the repo.
+2) Create/select a Cloud environment for the repo.
+3) Set the environment setup script to `scripts/codex_setup.sh` (Debian/Ubuntu `apt-get`; installs `pandoc`/`ripgrep`/`git` if missing).
+
+Notes that matter for autonomy and safety:
+- Setup scripts run with internet access; agent internet access is **off by default** and you should keep it off unless you explicitly want live sources (configurable per-environment).
+- If you enable agent internet access, use a **domain allowlist** and restrict HTTP methods to `GET`/`HEAD`/`OPTIONS`.
+- Codex caches container state for up to **12 hours**. When caching, it clones the repo and checks out the default branch; when resuming a cached container, it checks out the branch specified for the task.
+
+Cloud prompts (copy/paste into Codex web tasks):
+- Bootstrap run: `prompts/03_codex_cloud_bootstrap_prompt.txt`
+- Resume loop: `prompts/04_codex_cloud_resume_prompt.txt`
+
+Quick sanity checks after Run 1:
+- A PR exists with edits under `work/`.
+- Exactly one new file exists under `work/checkpoints/`.
+- `work/STATE.md` was updated with “what changed” + “next actions”.
+
+Parallel cloud tasks without merge hell (pattern):
+- Run 2–3 cloud tasks concurrently, each constrained to **one file** (or disjoint file sets) and explicitly **not editing** `work/STATE.md`.
+- Each task still creates **exactly one** checkpoint file under `work/checkpoints/` and opens a PR.
+- Do NOT invoke `$checkpoint` in parallel tasks (it edits `work/STATE.md`); write the single checkpoint file manually, and let the integrator update `work/STATE.md`.
+- Run an “integrator” cloud task to merge PR branches logically and update `work/STATE.md` with the integrated next actions.
 
 ## If you prefer the CLI
 - `cd` into this folder
