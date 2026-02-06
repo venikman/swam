@@ -23,7 +23,7 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Critique of memetics from this camp: [S28] [S29]
 - **Online diffusion / “internet memes” operational proxies:**
   - Hashtags as meme proxies; limited-attention competition: [S24]
-  - Complex contagion / reinforcement: [S26] [S32]
+  - Complex contagion / reinforcement: [S26] [S32] [S33] [S34] [S35] [S36]
   - Structural diversity vs single-channel exposure: [S31]
   - Influence vs homophily confound in diffusion estimates: [S30]
 
@@ -151,6 +151,42 @@ This is a “where to look” index; it does not resolve disagreements by scalar
 - Key takeaways (with status):
   - Supported: Diffusion patterns vary systematically by topic, not just by network structure. [S32]
   - Supported: The paper links some topics to complex-contagion-like spreading, challenging uniform “simple contagion” assumptions. [S32]
+
+### S33 — Granovetter (1978) — Threshold models of collective behavior
+- Why it matters:
+  - Foundational definition of “threshold” in collective behavior; underpins complex-contagion reinforcement logic. [S33]
+- Extracted quote (≤25 words):
+  - “The key concept is that of ‘threshold’: the number or proportion of others who must make one decision before a given actor does so.” [S33]
+- Key takeaways (with status):
+  - Supported: Collective behavior can be modeled with heterogeneous thresholds that depend on others’ choices. [S33]
+  - Supported: Different threshold distributions can yield very different aggregate outcomes even with similar average preferences. [S33]
+
+### S34 — Watts (2002) — Global cascades with threshold rules
+- Why it matters:
+  - Formalizes cascade dynamics on random networks under a threshold rule; relevant to predicting large-scale diffusion. [S34]
+- Extracted quote (≤25 words):
+  - “decisions are determined by the actions of their neighbors according to a simple threshold rule.” [S34]
+- Key takeaways (with status):
+  - Supported: The model links rare, large cascades to network structure plus threshold-based decision rules. [S34]
+  - Supported: Identifies network regimes where very large cascades are possible but rare. [S34]
+
+### S35 — Guilbeault, Becker, Centola (2017) — Complex contagions: decade in review
+- Why it matters:
+  - Review of complex contagion research across domains; summarizes key mechanisms and modeling directions. [S35]
+- Extracted quote (≤25 words):
+  - “complex contagions have been studied across an enormous variety of social domains.” [S35]
+- Key takeaways (with status):
+  - Supported: Surveys empirical domains (health, innovation, politics, social media) where complex contagions are studied. [S35]
+  - Supported: Highlights network topology and individual thresholds as central theoretical themes. [S35]
+
+### S36 — Reisinger et al. (2024) — Patterns of stability in complex contagions
+- Why it matters:
+  - Recent open-access method paper linking complex contagion to network component analysis and stability. [S36]
+- Extracted quote (≤25 words):
+  - “Diseases typically propagate through single connections, while behaviors and beliefs often necessitate multiple connections for further propagation.” [S36]
+- Key takeaways (with status):
+  - Supported: Distinguishes simple vs complex contagions by single vs multiple-connection requirements. [S36]
+  - Supported: Proposes a graph-reduction method to identify components relevant to complex contagion spread. [S36]
 
 ---
 

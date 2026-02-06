@@ -248,6 +248,38 @@
 - Accessed: 2026-02-06
 - Link: DOI landing page: `https://doi.org/10.1145/1963405.1963503` (abstract accessed via BibSonomy: `https://www.bibsonomy.org/bibtex/2af9355f102c5ea5281145ee44ec6f87d/psinger`)
 
+### S33: Threshold models of collective behavior (foundational threshold framing)
+- Citation: Granovetter, Mark. “Threshold Models of Collective Behavior.” *American Journal of Sociology* 83(6): 1420–1443 (1978).
+- Evidence level: Primary (peer-reviewed; foundational threshold model).
+- Source date: 1978
+- Accessed: 2026-02-06
+- Link: Stanford Sociology publication page (summary text + JSTOR link): `https://sociology.stanford.edu/publications/threshold-models-collective-behavior`
+- DOI: `https://doi.org/10.1086/226707`
+
+### S34: A simple model of global cascades on random networks (threshold diffusion)
+- Citation: Watts, Duncan J. “A simple model of global cascades on random networks.” *Proceedings of the National Academy of Sciences* 99(9): 5766–5771 (2002).
+- Evidence level: Primary (peer-reviewed; open access via PMC).
+- Source date: 2002-04-30 (issue date)
+- Accessed: 2026-02-06
+- Link: PMC full text: `https://pmc.ncbi.nlm.nih.gov/articles/PMC122850/`
+- DOI: `https://doi.org/10.1073/pnas.082090499`
+
+### S35: Complex contagions: A decade in review
+- Citation: Guilbeault, Douglas; Becker, Joshua; Centola, Damon. “Complex Contagions: A Decade in Review.” arXiv:1710.07606 (2017).
+- Evidence level: Secondary (review/synthesis).
+- Source date: 2017-10-20 (arXiv submission date)
+- Accessed: 2026-02-06
+- Link: arXiv abstract: `https://arxiv.org/abs/1710.07606`
+- DOI: `https://doi.org/10.48550/arXiv.1710.07606`
+
+### S36: Patterns of stability in complex contagions (open access, 2024)
+- Citation: Reisinger, Daniel; Tschofenig, Fabian; Adam, Raven; Kogler, Marie Lisa; Füllsack, Manfred; Veider, Fabian; Jäger, Georg. “Patterns of stability in complex contagions.” *Journal of Computational Social Science* 7: 1895–1911 (2024).
+- Evidence level: Primary (peer-reviewed; open access).
+- Source date: 2024-05-28 (published online)
+- Accessed: 2026-02-06
+- Link: Springer open access: `https://link.springer.com/article/10.1007/s42001-024-00294-3`
+- DOI: `https://doi.org/10.1007/s42001-024-00294-3`
+
 ---
 
 ## Additional primaries (memetics critique; author-hosted PDFs)
