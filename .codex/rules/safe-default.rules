@@ -1,0 +1,15 @@
+# Conservative allowlist for routine, read-only repo inspection.
+# Keep this minimal: do NOT add destructive prefixes (e.g., `git `, `rm`, `sudo`).
+#
+# Docs: https://developers.openai.com/codex/rules
+
+def rules(ctx):
+    prefix_rule("git status")
+    prefix_rule("git diff")
+    prefix_rule("git show")
+    prefix_rule("git log")
+    prefix_rule("git rev-parse")
+    prefix_rule("git ls-files")
+    prefix_rule("git grep")
+    prefix_rule("rg ")
+
