@@ -5,6 +5,6 @@ Read and follow `prompts/00_codex_thread_prompt.md`, but OVERRIDE its “keep go
 Rules:
 - Read `work/STATE.md` and the newest file in `work/checkpoints/`.
 - Execute the single highest-priority Next Action as ONE slice (~10–20 min).
-- Create exactly ONE checkpoint file under `work/checkpoints/` and update `work/STATE.md` (follow `.agents/skills/checkpoint/SKILL.md`; if explicit skill invocation is supported, you may use `$checkpoint`).
+- Create exactly ONE checkpoint file under `work/checkpoints/` and update `work/STATE.md` (follow `.codex/skills/checkpoint/SKILL.md`; if explicit skill invocation is supported, you may use `$checkpoint`).
 - Create a PR from this task branch and STOP.
 - If blocked by permissions/usage limits: still write the checkpoint + update `work/STATE.md`, then STOP.

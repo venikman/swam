@@ -24,7 +24,7 @@ Use **Codex app Automations** to “re-trigger” progress periodically:
 - Each run should end by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new `work/checkpoints/YYYYMMDD-HHMM.md`).
 
 Repo-scoped Codex assets:
-- Skill: `.agents/skills/checkpoint/SKILL.md`
+- Skill: `.codex/skills/checkpoint/SKILL.md`
 - Rules allowlist: `.codex/rules/safe-default.rules`
 - Cloud setup script: `scripts/codex_setup.sh`
 
