@@ -24,7 +24,7 @@ Use **Codex app Automations** to “re-trigger” progress periodically:
 - Each run should end by invoking `$checkpoint` (writes `work/STATE.md` + exactly one new `work/checkpoints/YYYYMMDD-HHMM.md`).
 
 Repo-scoped Codex assets:
-- Skill: `.codex/skills/checkpoint/SKILL.md`
+- Skill: `.agents/skills/checkpoint/SKILL.md`
 - Rules allowlist: `.codex/rules/safe-default.rules`
 - Cloud setup script: `scripts/codex_setup.sh`
 
@@ -51,10 +51,8 @@ References:
 - Codex web overview: https://developers.openai.com/codex/cloud/ (accessed 2026-02-06)
 - Cloud environments: https://developers.openai.com/codex/cloud/environments/ (accessed 2026-02-06)
 - Agent internet access: https://developers.openai.com/codex/cloud/internet-access/ (accessed 2026-02-06)
-- Skills overview: https://developers.openai.com/codex/skills/overview/ (accessed 2026-02-06)
-- Team config: https://developers.openai.com/codex/team-config/ (accessed 2026-02-06)
-- Introducing Codex (blog): https://openai.com/index/introducing-codex/ (accessed 2026-02-06)
-- Introducing the Codex app (blog): https://openai.com/index/introducing-the-codex-app/ (accessed 2026-02-06)
+- Skills: https://developers.openai.com/codex/skills/ (accessed 2026-02-06)
+- Team config: https://developers.openai.com/codex/team-config (accessed 2026-02-06)
 
 ## Cloud environments (optional)
 Codex Cloud tasks are usually **1–30 min**, so “long-running” work is best done as many short cloud tasks chained together via repo state (`work/STATE.md` + `work/checkpoints/`).
@@ -73,10 +71,10 @@ Cloud prompts (copy/paste into Codex web tasks):
 - Bootstrap run: `prompts/03_codex_cloud_bootstrap_prompt.txt`
 - Resume loop: `prompts/04_codex_cloud_resume_prompt.txt`
 
-CLI trigger (one command after you push `master`):
+CLI trigger (one command after you push the default branch):
 1) Set your env id (one-time): `cp .codex/local.env.example .codex/local.env` then edit it.
 2) Load it: `source .codex/local.env`
-3) Trigger: `scripts/codex_cloud_trigger.sh resume --branch master`
+3) Trigger: `scripts/codex_cloud_trigger.sh resume`
 
 Quick sanity checks after Run 1:
 - A PR exists with edits under `work/`.
