@@ -12,3 +12,6 @@ tmp/
 
 # Codex CLI diagnostic logs (local)
 error.log
+
+# Local Codex Cloud usage ledger (append-only; intentionally not committed)
+work/usage_log.jsonl
