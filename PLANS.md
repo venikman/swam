@@ -328,3 +328,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Updated `prompts/02_codex_automation_prompt.txt` to require the new checkpoint headings and clarify that `codex_automation_sync` runs the gate.
   - Next: Update the live automation prompt(s) in `~/.codex/automations/`, then create `swam-long` and pause `swam-slice` to avoid concurrent writers to `work/STATE.md`.
   - Blockers: None.
+
+- 2026-02-06T03:42:00-05:00
+  - Done: Created new Codex App Automation config `swam-long` (every 2 hours) and paused `swam-slice` (status=PAUSED, next_run_at cleared).
+  - Next: Click **Test** on `swam-long` and confirm it can run >70 minutes while pushing multiple micro-slice checkpoints; iterate on gate strictness if it stalls.
+  - Blockers: None.
