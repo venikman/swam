@@ -340,8 +340,23 @@ while :; do
         | tail -n 1 \
         || true
     )"
+
     if [[ -n "${task_url}" ]]; then
       task_id="${task_url##*/}"
+      backoff_reset
+      break
+    fi
+
+    # Fallback: some versions/terminals may print only the task id, or wrap the URL.
+    task_id="$(
+      printf '%s\n' "${out}" \
+        | tr -d '\r' \
+        | grep -Eo 'task_[[:alnum:]_]+' \
+        | tail -n 1 \
+        || true
+    )"
+    if [[ -n "${task_id}" ]]; then
+      task_url="https://chatgpt.com/codex/tasks/${task_id}"
       backoff_reset
       break
     fi
