@@ -323,3 +323,8 @@ Make this repo’s Codex workflow more durable and low-friction by:
   - Done: Updated checkpoint skill to require `## Search / exploration log` + `## Gate checks` headings (so slices pass `codex_slice_gate`).
   - Next: Update `prompts/02_codex_automation_prompt.txt` + the live automation prompt(s) accordingly, then create `swam-long` and pause `swam-slice`.
   - Blockers: None.
+
+- 2026-02-06T03:36:00-05:00
+  - Done: Updated `prompts/02_codex_automation_prompt.txt` to require the new checkpoint headings and clarify that `codex_automation_sync` runs the gate.
+  - Next: Update the live automation prompt(s) in `~/.codex/automations/`, then create `swam-long` and pause `swam-slice` to avoid concurrent writers to `work/STATE.md`.
+  - Blockers: None.
