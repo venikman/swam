@@ -139,3 +139,78 @@ Produce an auditable, citation-heavy research proposal package on **memetics** a
   - Done: Milestones 4+6 committed (hypothesis/problem portfolios + study designs + ADR updates). Commit: `324193e`.
   - Next: Run validation commands; ensure all manifest deliverables exist and are citation-covered; fix any gaps.
   - Blockers: None.
+
+---
+
+# ExecPlan: Codex Workflow Hardening (Skills + Automations + Rules + Cloud Setup)
+
+## Goal
+Make this repo’s Codex workflow more durable and low-friction by:
+- encoding the “checkpoint + STATE update” loop as a repo skill,
+- tightening the automation prompt so it cannot forget checkpoint contents,
+- adding a safe command allowlist (Rules) to reduce permission stalls,
+- adding a cloud-environment setup script + documenting how to wire it,
+- updating README guidance to match current published Codex plan limits/models.
+
+## Success criteria (observable)
+- A repo skill exists at `.agents/skills/checkpoint/SKILL.md`.
+- `prompts/02_codex_automation_prompt.txt` invokes `$checkpoint` and no longer omits checkpoint content requirements.
+- A Rules file exists under `.codex/rules/` with conservative `prefix_rule(...)` allowlisting for routine commands.
+- A cloud setup script exists at `scripts/codex_setup.sh` and is syntactically valid (`bash -n`).
+- `README.md` reflects current published plan limits/models (with explicit “accessed” date and link targets).
+- `git status --porcelain` is clean after changes.
+
+## Non-goals
+- Changing Codex app settings for the user (only repo artifacts + documentation).
+- Upgrading project dependencies or introducing new runtime requirements.
+- Changing the memetics deliverables under `work/` (this is scaffold hardening only).
+
+## Constraints (sandbox, network, OS, time, dependencies)
+- Environment: macOS, `zsh`, repo root `/Users/stas-studio/Developer/swam`.
+- Network: allowed only to verify official OpenAI Codex docs (domain allowlist: `developers.openai.com`, `openai.com`).
+- Safety: Rules allowlist must stay conservative (no broad prefixes like `git `, no destructive commands).
+
+## Repo map (key files/dirs)
+- Skills: `.agents/skills/`
+- Rules: `.codex/rules/`
+- Prompts: `prompts/02_codex_automation_prompt.txt`
+- Docs: `README.md`, `AGENTS.md`
+- Scripts: `scripts/codex_setup.sh`
+
+## Milestones
+1. **Checkpoint skill + automation prompt fix**
+   - Steps
+     - Create `.agents/skills/checkpoint/SKILL.md`.
+     - Update `prompts/02_codex_automation_prompt.txt` to call `$checkpoint`.
+   - Validation: `test -f .agents/skills/checkpoint/SKILL.md && rg -n '\\$checkpoint' prompts/02_codex_automation_prompt.txt`
+   - Rollback: `git revert <commit>`
+
+2. **Rules allowlist (conservative)**
+   - Steps
+     - Add `.codex/rules/*.rules` with minimal `prefix_rule(...)` entries.
+   - Validation: `test -f .codex/rules/*.rules && rg -n \"^\\s*prefix_rule\\(\" .codex/rules/*.rules`
+   - Rollback: `git revert <commit>`
+
+3. **Cloud setup script**
+   - Steps
+     - Add `scripts/codex_setup.sh` (idempotent, non-interactive).
+   - Validation: `test -f scripts/codex_setup.sh && bash -n scripts/codex_setup.sh`
+   - Rollback: `git revert <commit>`
+
+4. **Docs alignment**
+   - Steps
+     - Update `README.md` to reflect current plan limits/models and describe the new skill/rules/setup script.
+     - (Optional) Align `prompts/00_codex_thread_prompt.md` model naming with README.
+   - Validation: `rg -n \"gpt-5\\.3-codex|gpt-5\\.1-codex-mini|18 ?000|5h\" README.md prompts/00_codex_thread_prompt.md`
+   - Rollback: `git revert <commit>`
+
+## Decisions log (why changes)
+- Keep changes small and reversible; one milestone per commit.
+- Prefer repo-scoped skills/rules to reduce prompt bloat and permission stalls.
+- Keep Rules conservative to avoid allowing destructive commands.
+
+## Progress log (ISO-8601 timestamps)
+- 2026-02-05T21:06:50-05:00
+  - Done: Planned workflow hardening changes (this ExecPlan).
+  - Next: Milestone 1 (checkpoint skill + automation prompt fix).
+  - Blockers: None.
