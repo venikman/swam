@@ -263,6 +263,21 @@
 - Accessed: 2026-02-06
 - Link: `https://snap.stanford.edu/data/memetracker9.html`
 
+### S42: Memeshapes — temporal dynamics of online media (WSDM 2011)
+- Citation: Leskovec, Jure; Backstrom, Lars; Kleinberg, Jon. “Memeshapes: The Structure of Information Paths in Online Media.” In *Proceedings of the 4th ACM International Conference on Web Search and Data Mining (WSDM ’11)*, 623–632 (2011).
+- Evidence level: Primary (peer-reviewed conference paper; author-hosted PDF).
+- Source date: 2011
+- Accessed: 2026-02-06
+- Link: PDF (Stanford): `https://cs.stanford.edu/people/jure/pubs/memeshapes-wsdm11.pdf`
+
+### S43: Dynamical classes of collective attention in Twitter (WWW 2012 / arXiv preprint)
+- Citation: Lehmann, Janette; Gonçalves, Bruno; Ramasco, José J.; Cattuto, Ciro. “Dynamical classes of collective attention in Twitter.” In *Proceedings of the 21st International Conference on World Wide Web (WWW ’12)*, 251–260 (2012). arXiv:1111.1896.
+- Evidence level: Primary (preprint; peer-reviewed conference paper).
+- Source date: 2011-11-08 (arXiv submission date)
+- Accessed: 2026-02-06
+- Link: arXiv abstract: `https://arxiv.org/abs/1111.1896`
+- DOI: `https://doi.org/10.48550/arXiv.1111.1896`
+
 ### S30: Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks
 - Citation: Aral, Sinan; Muchnik, Lev; Sundararajan, Arun. “Distinguishing influence-based contagion from homophily-driven diffusion in dynamic networks.” *Proceedings of the National Academy of Sciences* 106(51): 21544–21549 (2009).
 - Evidence level: Primary (peer-reviewed; open access via PMC).

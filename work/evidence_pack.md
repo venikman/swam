@@ -128,6 +128,26 @@ This is a “where to look” index; it does not resolve disagreements by scalar
   - Supported: Reports corpus-scale counts for documents, memes, and links in the Memetracker dataset. [S41]
   - Caution: Dataset counts are descriptive metadata; they do not validate causal interpretations without method details. [S41]
 
+### S42 — Leskovec et al. (2011) — Memeshapes temporal dynamics in online media
+- Why it matters:
+  - Provides a temporal-shape taxonomy for how information evolves across online media streams. [S42]
+- Extracted quote (≤25 words):
+  - “On-line media exhibit rich temporal dynamics, with certain pieces of information spreading over hours, while others propagate over months.” [S42]
+- Key takeaways (with status):
+  - Supported: Reports heterogeneity in temporal diffusion patterns and proposes a small set of common “shape” classes. [S42]
+  - Supported: Analyzes large-scale corpora across news/blogs and Twitter. [S42]
+  - Caution: Shapes are derived from specific platforms and time periods; reuse elsewhere needs calibration. [S42]
+
+### S43 — Lehmann et al. (2012) — Dynamical classes of collective attention in Twitter
+- Why it matters:
+  - Identifies discrete attention-dynamics classes for meme popularity on Twitter, informing temporal modeling assumptions. [S43]
+- Extracted quote (≤25 words):
+  - “We find that the evolution of user attention defines dynamical classes in the popularity of memes.” [S43]
+- Key takeaways (with status):
+  - Supported: Observes distinct attention dynamics classes in Twitter meme popularity time series. [S43]
+  - Supported: Notes that epidemic-style spreading fits only a minority of memes. [S43]
+  - Caution: Evidence is platform- and period-specific; generalization beyond Twitter needs validation. [S43]
+
 ### S38 — Coscia (2013) — Quickmeme dataset as operational unit
 - Why it matters:
   - Offers a concrete platform-bound operationalization of “meme” via Quickmeme templates and their instances, enabling empirical distributional claims. [S38]
